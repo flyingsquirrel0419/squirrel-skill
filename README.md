@@ -2,15 +2,17 @@
 
 # 🐿️ Squirrel
 
-[![License](https://img.shields.io/github/license/flying-squirrel/squirrel-skill)](LICENSE)
+[![License](https://img.shields.io/github/license/flyingsquirrel0419/squirrel-skill)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platforms-8-blue)](#-platform-compatibility)
 
 **Full-cycle AI coding skill that works everywhere — from blank canvas to production.**
 
+Pre-release: the first tagged version has not shipped yet, and the installer and docs may still evolve.
+
 Plans, builds, tests, lints, fixes bugs, and writes production-grade docs.
 Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilot.
 
-[Install](#-installation) · [How it works](#-how-it-works) · [Report Bug](https://github.com/flying-squirrel/squirrel-skill/issues)
+[Install](#-installation) · [How it works](#-how-it-works) · [Report Bug](https://github.com/flyingsquirrel0419/squirrel-skill/issues)
 
 </div>
 
@@ -21,9 +23,9 @@ Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilo
 - **Auto-detects project state** — Greenfield, in-progress, or mature. Squirrel figures out where your project is and jumps in at exactly the right point instead of forcing a one-size-fits-all workflow.
 - **Respects existing code** — Matches your naming conventions, test framework, import style, and architecture. Extends what's there instead of overwriting it. Reads 2–3 similar files before writing a new one.
 - **8-phase engineering pipeline** — Discover → Plan → Build → Test → Bug Hunt → Polish → Document → Ship. The same disciplined process a senior engineer follows, every time.
-- **Platform-agnostic** — One skill file, 8 AI coding agents. Drop it in as `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, or any of the other supported formats and it just works.
+- **Platform-agnostic** — One skill file, 8 AI coding agents. Drop it in as `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/squirrel.mdc`, or any of the other supported formats and it just works.
 - **Built-in failure recovery** — 3-Strike Rule: fix, retry differently, then stop and ask. Never leaves code in a broken state. Includes sub-agent failure recovery for parallel execution.
-- **CI/CD templates included** — Ready-to-use GitHub Actions workflows for Node.js, Python, Go, Rust, and more. Ship with confidence from day one.
+- **CI/CD templates included** — Ready-to-use GitHub Actions workflows for Node.js, Python, Go, Rust, and more. Use them as a starting point, not a drop-in guarantee.
 - **Stack-agnostic** — Works with TypeScript, Python, Go, Rust, Ruby, Java, C#, Elixir, and any language that has a linter, formatter, and test runner. Detects your stack and adapts automatically.
 
 ---
@@ -68,18 +70,20 @@ Then just tell your AI agent what you want to build:
 ```
 
 Squirrel auto-detects your project state and starts at the right phase. No config needed.
+If you are trying it before the first tagged release, prefer cloning the repo or pinning a commit so future installer changes are explicit.
 
 ---
 
 ## Installation
 
-### One-liner (recommended)
+### One-liner (recommended for trying the latest pre-release)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash
 ```
 
 Auto-detects which AI agents are configured in your project and installs Squirrel for all of them.
+Because this project is still pre-release, that one-liner always tracks the latest `main` branch version.
 
 ### Install for a specific platform
 
@@ -174,6 +178,7 @@ aider --read squirrel-skill.md
 <summary>Cline</summary>
 
 ```bash
+mkdir -p .clinerules
 curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .clinerules/squirrel.md
 ```
 </details>
@@ -258,8 +263,11 @@ Squirrel ships with supplementary references loaded on demand:
 
 ```
 squirrel/
+├── .github/workflows/ci.yml         # Smoke-test workflow for installer regressions
 ├── SKILL.md                        # Main skill definition (629 lines)
 ├── install.sh                      # One-liner installer with auto-detection
+├── tests/
+│   └── installer_smoke_test.sh     # Verifies installer output and doc slug consistency
 └── references/
     ├── ci_templates.md             # CI/CD pipeline templates
     ├── plan_template.md            # Project plan template

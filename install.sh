@@ -52,6 +52,8 @@ fail()  { echo -e "${RED}  fail${RESET} $*"; exit 1; }
 download_skill() {
   local dest="$1"
 
+  mkdir -p "$(dirname "${dest}")"
+
   if [[ -d "${SCRIPT_DIR}/references" ]]; then
     # Running from cloned repo — copy local files
     cp "${SCRIPT_DIR}/SKILL.md" "${dest}"
@@ -76,10 +78,11 @@ download_with_frontmatter() {
   shift
   local frontmatter="$*"
 
+  mkdir -p "$(dirname "${dest}")"
+
   if [[ -d "${SCRIPT_DIR}/references" ]]; then
     # Local repo — prepend frontmatter to copy
-    echo "${frontmatter}" > "${dest}"
-    echo "" >> "${dest}"
+    printf '%s\n\n' "${frontmatter}" > "${dest}"
     cat "${SCRIPT_DIR}/SKILL.md" >> "${dest}"
     ok "Copied from local repository with frontmatter"
     return 0
@@ -89,8 +92,7 @@ download_with_frontmatter() {
   local tmp
   tmp=$(mktemp)
   download_skill "${tmp}"
-  echo "${frontmatter}" > "${dest}"
-  echo "" >> "${dest}"
+  printf '%s\n\n' "${frontmatter}" > "${dest}"
   cat "${tmp}" >> "${dest}"
   rm -f "${tmp}"
 }
@@ -164,15 +166,13 @@ install_claude_code() {
 
 install_cursor() {
   local dest="${CUSTOM_PATH:-.cursor/rules/squirrel.mdc}"
-  mkdir -p "$(dirname "${dest}")"
-  download_with_frontmatter "${dest}" "---\ndescription: Squirrel full-cycle development skill\nalwaysApply: true\n---"
+  download_with_frontmatter "${dest}" $'---\ndescription: Squirrel full-cycle development skill\nalwaysApply: true\n---'
   ok "Installed for Cursor at ${dest}"
 }
 
 install_windsurf() {
   local dest="${CUSTOM_PATH:-.windsurf/rules/squirrel.md}"
-  mkdir -p "$(dirname "${dest}")"
-  download_with_frontmatter "${dest}" "---\ntrigger: always_on\ndescription: Squirrel full-cycle development skill\n---"
+  download_with_frontmatter "${dest}" $'---\ntrigger: always_on\ndescription: Squirrel full-cycle development skill\n---'
   ok "Installed for Windsurf at ${dest}"
 }
 

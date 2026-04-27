@@ -4,8 +4,8 @@
 
 | Version | Supported |
 | ------- | --------- |
-| 1.0.x   | ✅ |
-| < 1.0   | ❌ |
+| `main` (pre-release) | ✅ |
+| Tagged releases | Not available yet |
 
 ## Reporting a Vulnerability
 
@@ -15,7 +15,7 @@ If you discover a security vulnerability in Squirrel Skill, please report it res
 
 ### Preferred method: GitHub Security Advisories
 
-1. Go to [github.com/flying-squirrel/squirrel-skill/security/advisories/new](https://github.com/flying-squirrel/squirrel-skill/security/advisories/new)
+1. Go to [github.com/flyingsquirrel0419/squirrel-skill/security/advisories/new](https://github.com/flyingsquirrel0419/squirrel-skill/security/advisories/new)
 2. Fill in the details: description, affected versions, and impact
 3. Submit as a **private** security advisory
 
@@ -27,6 +27,7 @@ Send a detailed report to the maintainer via GitHub DM or the contact method lis
 
 - **Description** of the vulnerability
 - **Affected file(s)** and line number(s)
+- **Commit SHA** or branch name, if you tested something other than `main`
 - **Steps to reproduce** (if applicable)
 - **Potential impact** (e.g., what an attacker could exploit)
 - **Suggested fix** (optional, but appreciated)

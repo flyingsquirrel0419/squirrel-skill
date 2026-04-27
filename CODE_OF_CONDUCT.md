@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement through
-[GitHub Issues](https://github.com/flying-squirrel/squirrel-skill/issues) or
+[GitHub Issues](https://github.com/flyingsquirrel0419/squirrel-skill/issues) or
 via direct message to the maintainer.
 
 All complaints will be reviewed and investigated promptly and fairly.

@@ -1,6 +1,7 @@
 # Contributing to Squirrel 🐿️
 
 First off, thanks for taking the time to contribute. Squirrel is better because of people like you.
+The project is still pre-release, so small documentation and installer fixes are especially valuable.
 
 ---
 
@@ -9,7 +10,8 @@ First off, thanks for taking the time to contribute. Squirrel is better because 
 1. Fork the repository
 2. Create a branch: `git checkout -b feature/your-feature`
 3. Make your changes
-4. Test on at least one supported platform
+4. Test on at least one supported platform when possible
+   - At minimum, run `bash -n install.sh` and `bash tests/installer_smoke_test.sh`
 5. Push and open a Pull Request
 
 That's it. Read on for the details.
@@ -22,7 +24,7 @@ That's it. Read on for the details.
 
 If you find an instruction that leads to incorrect, insecure, or unexpected AI behavior:
 
-1. Check [existing issues](https://github.com/flying-squirrel/squirrel-skill/issues) to see if it's already reported
+1. Check [existing issues](https://github.com/flyingsquirrel0419/squirrel-skill/issues) to see if it's already reported
 2. If not, open a new issue with:
    - Which AI platform you were using
    - Which programming language / stack
@@ -125,7 +127,7 @@ refactor: reorganize Phase 6 formatter detection
 
 ### Bug reports
 
-Use the [GitHub issue template](https://github.com/flying-squirrel/squirrel-skill/issues/new). Include:
+Use the [GitHub issue template](https://github.com/flyingsquirrel0419/squirrel-skill/issues/new). Include:
 
 - Platform (which AI agent)
 - Stack (language / framework)
@@ -149,26 +151,28 @@ Open an issue with the `feature-request` label. Describe:
 
 ## Development Setup
 
-No build tools needed — Squirrel is plain Markdown files.
+No build tools needed — Squirrel is plain Markdown files plus a small shell-based installer test.
 
 ```bash
 # Clone
-git clone https://github.com/flying-squirrel/squirrel-skill.git
+git clone https://github.com/flyingsquirrel0419/squirrel-skill.git
 cd squirrel-skill
 
 # Edit
-vim squirrel/SKILL.md
+vim SKILL.md
 # or
-vim squirrel/references/stack_hints.md
+vim references/stack_hints.md
 
-# Test — load SKILL.md into your AI agent and run a task
-# (see README.md for platform-specific installation)
+# Test
+bash -n install.sh
+bash tests/installer_smoke_test.sh
 ```
 
 ### File structure
 
 ```
 squirrel/
+├── .github/workflows/ci.yml         # Smoke-test workflow
 ├── SKILL.md                        # Main skill — single source of truth
 ├── README.md                       # Project documentation
 ├── CHANGELOG.md                    # Version history
@@ -176,6 +180,8 @@ squirrel/
 ├── SECURITY.md                     # Vulnerability reporting
 ├── CODE_OF_CONDUCT.md              # Community standards
 ├── LICENSE                         # Apache 2.0
+├── tests/
+│   └── installer_smoke_test.sh     # Installer and documentation consistency checks
 └── references/
     ├── ci_templates.md             # CI/CD pipeline templates
     ├── plan_template.md            # Project plan template
@@ -187,7 +193,7 @@ squirrel/
 
 ## Questions?
 
-Open a [GitHub Discussion](https://github.com/flying-squirrel/squirrel-skill/discussions) for general questions that aren't bugs or feature requests.
+Open a [GitHub Discussion](https://github.com/flyingsquirrel0419/squirrel-skill/discussions) for general questions that aren't bugs or feature requests.
 
 ---
 

@@ -11,11 +11,11 @@ description: |
   Why the name? Squirrels are obsessive planners. They find, organize, and store before winter hits. This skill does the same: gather requirements → plan carefully → build for the long run.
 
 platforms:
-  - opencode     # SKILL.md in ~/.opencode/skills/ or .opencode/skills/
+  - opencode     # ~/.config/opencode/skills/squirrel/SKILL.md or .opencode/skills/
   - codex        # AGENTS.md or codex-instructions.md in project root
   - claude-code  # CLAUDE.md in project root
   - cursor       # .cursorrules or .cursor/rules/*.mdc
-  - windsurf     # .windsurfrules in project root
+  - windsurf     # .windsurf/rules/*.md or .windsurfrules in project root
   - aider        # CONVENTIONS.md or .aider.conf.yml
   - cline        # .clinerules in project root
   - copilot      # .github/copilot-instructions.md
