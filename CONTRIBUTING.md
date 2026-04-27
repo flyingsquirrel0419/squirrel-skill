@@ -1,7 +1,6 @@
 # Contributing to Squirrel
 
 First off, thanks for taking the time to contribute. Squirrel is better because of people like you.
-The project is still pre-release, so small documentation and installer fixes are especially valuable.
 
 ---
 

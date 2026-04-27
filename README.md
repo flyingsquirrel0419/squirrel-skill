@@ -10,8 +10,6 @@
 
 **Full-cycle AI coding skill that works everywhere — from blank canvas to production.**
 
-Pre-release: the first tagged version has not shipped yet, and the installer and docs may still evolve.
-
 Plans, builds, tests, lints, fixes bugs, and writes production-grade docs.
 Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilot.
 
@@ -73,20 +71,18 @@ Then just tell your AI agent what you want to build:
 ```
 
 Squirrel auto-detects your project state and starts at the right phase. No config needed.
-If you are trying it before the first tagged release, prefer cloning the repo or pinning a commit so future installer changes are explicit.
 
 ---
 
 ## Installation
 
-### One-liner (recommended for trying the latest pre-release)
+### One-liner (recommended)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash
 ```
 
 Auto-detects which AI agents are configured in your project and installs Squirrel for all of them.
-Because this project is still pre-release, that one-liner always tracks the latest `main` branch version.
 
 ### Install for a specific platform
 

@@ -4,8 +4,8 @@
 
 | Version | Supported |
 | ------- | --------- |
-| `main` (pre-release) | ✅ |
-| Tagged releases | Not available yet |
+| 1.0.x | ✅ |
+| < 1.0 | ❌ |
 
 ## Reporting a Vulnerability
 

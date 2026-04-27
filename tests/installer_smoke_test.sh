@@ -93,9 +93,25 @@ test_docs_use_canonical_repo_slug() {
     || fail "Found outdated repo slug in project docs or installer"
 }
 
-test_changelog_does_not_claim_unreleased_version_is_shipped() {
-  ! grep -Eq '^## \[1\.0\.0\] - ' "$ROOT_DIR/CHANGELOG.md" \
-    || fail "CHANGELOG.md still claims 1.0.0 has been released"
+test_release_docs_match_1_0_0_state() {
+  grep -Eq '^## \[1\.0\.0\] - 2026-04-28$' "$ROOT_DIR/CHANGELOG.md" \
+    || fail "CHANGELOG.md is missing the 1.0.0 release heading"
+  grep -F '[1.0.0]: https://github.com/flyingsquirrel0419/squirrel-skill/releases/tag/v1.0.0' "$ROOT_DIR/CHANGELOG.md" >/dev/null \
+    || fail "CHANGELOG.md is missing the 1.0.0 release link"
+  ! grep -F 'still pre-release' "$ROOT_DIR/CHANGELOG.md" >/dev/null \
+    || fail "CHANGELOG.md still contains pre-release wording"
+  ! grep -F 'still pre-release' "$ROOT_DIR/README.md" >/dev/null \
+    || fail "README.md still contains pre-release wording"
+  ! grep -F 'latest pre-release' "$ROOT_DIR/README.md" >/dev/null \
+    || fail "README.md still contains pre-release install wording"
+  ! grep -F 'tracks the latest `main` branch version' "$ROOT_DIR/README.md" >/dev/null \
+    || fail "README.md still claims install tracks pre-release main"
+  ! grep -F 'still pre-release' "$ROOT_DIR/CONTRIBUTING.md" >/dev/null \
+    || fail "CONTRIBUTING.md still contains pre-release wording"
+  grep -F '| 1.0.x | ✅ |' "$ROOT_DIR/SECURITY.md" >/dev/null \
+    || fail "SECURITY.md is missing 1.0.x support policy"
+  grep -F '| < 1.0 | ❌ |' "$ROOT_DIR/SECURITY.md" >/dev/null \
+    || fail "SECURITY.md is missing unsupported pre-1.0 policy"
 }
 
 test_all_contributors_docs_are_wired_up() {
@@ -121,7 +137,7 @@ main() {
   test_cursor_frontmatter_uses_real_newlines
   test_custom_nested_path_creates_parent_directories
   test_docs_use_canonical_repo_slug
-  test_changelog_does_not_claim_unreleased_version_is_shipped
+  test_release_docs_match_1_0_0_state
   test_all_contributors_docs_are_wired_up
   test_pull_request_template_exists
   echo "installer smoke tests: PASS"
