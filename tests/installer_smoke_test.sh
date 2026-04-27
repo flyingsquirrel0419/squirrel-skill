@@ -98,11 +98,32 @@ test_changelog_does_not_claim_unreleased_version_is_shipped() {
     || fail "CHANGELOG.md still claims 1.0.0 has been released"
 }
 
+test_all_contributors_docs_are_wired_up() {
+  [[ -f "$ROOT_DIR/.all-contributorsrc" ]] || fail ".all-contributorsrc is missing"
+  grep -F '[![All Contributors]' "$ROOT_DIR/README.md" >/dev/null \
+    || fail "README.md is missing the All Contributors badge"
+  grep -F '<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->' "$ROOT_DIR/README.md" >/dev/null \
+    || fail "README.md is missing the All Contributors list start marker"
+  grep -F 'npx all-contributors-cli add' "$ROOT_DIR/CONTRIBUTING.md" >/dev/null \
+    || fail "CONTRIBUTING.md is missing contributor update instructions"
+}
+
+test_pull_request_template_exists() {
+  [[ -f "$ROOT_DIR/.github/pull_request_template.md" ]] \
+    || fail ".github/pull_request_template.md is missing"
+  grep -F '## Summary' "$ROOT_DIR/.github/pull_request_template.md" >/dev/null \
+    || fail "Pull request template is missing the summary section"
+  grep -F -- '- [ ] Ran `bash tests/installer_smoke_test.sh`' "$ROOT_DIR/.github/pull_request_template.md" >/dev/null \
+    || fail "Pull request template is missing the smoke-test checklist item"
+}
+
 main() {
   test_cursor_frontmatter_uses_real_newlines
   test_custom_nested_path_creates_parent_directories
   test_docs_use_canonical_repo_slug
   test_changelog_does_not_claim_unreleased_version_is_shipped
+  test_all_contributors_docs_are_wired_up
+  test_pull_request_template_exists
   echo "installer smoke tests: PASS"
 }
 

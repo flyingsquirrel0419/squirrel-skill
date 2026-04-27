@@ -1,4 +1,4 @@
-# Contributing to Squirrel 🐿️
+# Contributing to Squirrel
 
 First off, thanks for taking the time to contribute. Squirrel is better because of people like you.
 The project is still pre-release, so small documentation and installer fixes are especially valuable.
@@ -58,6 +58,14 @@ If you want to add support for a new AI coding agent:
 - **Missing edge cases**: If a checklist misses something you've hit in practice, add it
 - **Typos and grammar**: PRs welcome, no issue needed
 
+### Contributor credits
+
+This repository is wired for the [All Contributors](https://allcontributors.org/overview/) spec.
+
+- If the GitHub app is installed, mention `@all-contributors` on a PR or issue comment.
+- If you are updating credits manually, run `npx all-contributors-cli add <github-username> <contribution>` and commit the resulting changes to `.all-contributorsrc` and `README.md`.
+- Valid contribution types include `code`, `doc`, `bug`, `ideas`, `infra`, `maintenance`, `review`, and more.
+
 ---
 
 ## Style Guide
@@ -93,33 +101,9 @@ refactor: reorganize Phase 6 formatter detection
 1. **One concern per PR.** Don't bundle a bug fix with a new feature and a refactor. Keep it focused.
 2. **Test your change.** Load the modified SKILL.md in at least one AI coding agent and verify it works. Mention which platform(s) you tested in the PR description.
 3. **Update documentation.** If you change SKILL.md, check if README.md or CHANGELOG.md need updates too.
-4. **PR description template:**
-
-```markdown
-## What changed
-[brief description]
-
-## Why
-[context / motivation]
-
-## Tested on
-- [ ] OpenCode
-- [ ] Codex
-- [ ] Claude Code
-- [ ] Cursor
-- [ ] Windsurf
-- [ ] Aider
-- [ ] Cline
-- [ ] GitHub Copilot
-
-## Checklist
-- [ ] SKILL.md follows the style guide
-- [ ] README.md updated (if needed)
-- [ ] CHANGELOG.md updated (if needed)
-- [ ] No platform-specific syntax in SKILL.md
-```
-
-5. **Review.** Maintainers will review within 5 business days. Be responsive to feedback.
+4. **Use the PR template.** GitHub will preload `.github/pull_request_template.md` with the required summary, testing, and checklist fields.
+5. **Contributor credits.** If the PR adds a new contributor worth crediting, update `.all-contributorsrc` and `README.md`, or request `@all-contributors` on the PR.
+6. **Review.** Maintainers will review within 5 business days. Be responsive to feedback.
 
 ---
 
@@ -172,6 +156,7 @@ bash tests/installer_smoke_test.sh
 
 ```
 squirrel/
+├── .all-contributorsrc              # All Contributors config
 ├── .github/workflows/ci.yml         # Smoke-test workflow
 ├── SKILL.md                        # Main skill — single source of truth
 ├── README.md                       # Project documentation

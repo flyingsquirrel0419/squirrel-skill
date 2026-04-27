@@ -4,6 +4,9 @@
 
 [![License](https://img.shields.io/github/license/flyingsquirrel0419/squirrel-skill)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platforms-8-blue)](#-platform-compatibility)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/github/all-contributors/flyingsquirrel0419/squirrel-skill?color=ee8449&style=flat-square)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **Full-cycle AI coding skill that works everywhere — from blank canvas to production.**
 
@@ -18,7 +21,7 @@ Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilo
 
 ---
 
-## ✨ Features
+## Features
 
 - **Auto-detects project state** — Greenfield, in-progress, or mature. Squirrel figures out where your project is and jumps in at exactly the right point instead of forcing a one-size-fits-all workflow.
 - **Respects existing code** — Matches your naming conventions, test framework, import style, and architecture. Extends what's there instead of overwriting it. Reads 2–3 similar files before writing a new one.
@@ -211,14 +214,14 @@ Squirrel checks your project directory and classifies it:
 ### The 8-Phase Pipeline
 
 ```
-[1] 🔍 Discover   → Understand the project (audit existing code or gather requirements)
-[2] 📋 Plan       → Concrete task list with dependencies, risks, and done-criteria
-[3] 💻 Build      → Write or modify code (parallel sub-agents when platform supports it)
-[4] 🧪 Test       → Run existing tests, write new ones, 70%+ coverage target
-[5] 🐛 Bug Hunt   → Static analysis + manual review, fix all critical/warning bugs
-[6] ✨ Polish     → Lint, format, type check, remove dead code
-[7] 📖 Document   → README + inline docs (update existing, don't overwrite)
-[8] 🚀 Ship      → Final checklist: tests green, no secrets, CI configured, clean checkout
+[1] Discover  → Understand the project (audit existing code or gather requirements)
+[2] Plan      → Concrete task list with dependencies, risks, and done-criteria
+[3] Build     → Write or modify code (parallel sub-agents when platform supports it)
+[4] Test      → Run existing tests, write new ones, 70%+ coverage target
+[5] Bug Hunt  → Static analysis + manual review, fix all critical/warning bugs
+[6] Polish    → Lint, format, type check, remove dead code
+[7] Document  → README + inline docs (update existing, don't overwrite)
+[8] Ship      → Final checklist: tests green, no secrets, CI configured, clean checkout
 ```
 
 ### Failure Recovery (3-Strike Rule)
@@ -244,7 +247,7 @@ CONSTRAINTS: [what not to do]
 
 ---
 
-## ⚙️ Reference Files
+## Reference Files
 
 Squirrel ships with supplementary references loaded on demand:
 
@@ -257,12 +260,13 @@ Squirrel ships with supplementary references loaded on demand:
 
 ---
 
-## 🧪 Development
+## Development
 
 ### Project structure
 
 ```
 squirrel/
+├── .all-contributorsrc              # All Contributors config for README credits
 ├── .github/workflows/ci.yml         # Smoke-test workflow for installer regressions
 ├── SKILL.md                        # Main skill definition (629 lines)
 ├── install.sh                      # One-liner installer with auto-detection
@@ -292,6 +296,22 @@ squirrel/
 
 ---
 
-## 📄 License
+## Contributors
+
+This project follows the [All Contributors](https://allcontributors.org/overview/) specification. Contributions of any kind are welcome.
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/flyingsquirrel0419"><img src="https://avatars.githubusercontent.com/u/217446317?v=4" width="100px;" alt="flyingsquirrel0419"/><br /><sub><b>flyingsquirrel0419</b></sub></a><br /><a href="https://github.com/flyingsquirrel0419/squirrel-skill/commits?author=flyingsquirrel0419" title="Code">💻</a> <a href="https://github.com/flyingsquirrel0419/squirrel-skill/commits?author=flyingsquirrel0419" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+---
+
+## License
 
 [Apache 2.0](LICENSE) © flying_squirrel__
