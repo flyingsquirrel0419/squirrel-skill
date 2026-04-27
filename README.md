@@ -246,4 +246,4 @@ squirrel/
 
 ## 📄 License
 
-[MIT](LICENSE) © flying_squirrel__
+[Apache 2.0](LICENSE) © flying_squirrel__
