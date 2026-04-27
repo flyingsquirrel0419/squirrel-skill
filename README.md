@@ -28,18 +28,25 @@ Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilo
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-Get Squirrel running in under 60 seconds:
+Install in one command — auto-detects your AI agent and platform:
 
 ```bash
-# Option 1: Cross-platform (Codex, Cursor, Cline, Claude Code)
-# Copy SKILL.md content into AGENTS.md at your project root
-cp SKILL.md AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash
+```
 
-# Option 2: OpenCode (native skill format)
-mkdir -p ~/.config/opencode/skills/squirrel
-cp SKILL.md ~/.config/opencode/skills/squirrel/SKILL.md
+Or install for a specific platform:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash -s -- --platform cursor
+```
+
+Or clone and run locally:
+
+```bash
+git clone https://github.com/flyingsquirrel0419/squirrel-skill.git
+cd squirrel-skill && bash install.sh
 ```
 
 Then just tell your AI agent what you want to build:
@@ -64,90 +71,122 @@ Squirrel auto-detects your project state and starts at the right phase. No confi
 
 ---
 
-## 📦 Installation
+## Installation
 
-### Requirements
-- Any AI coding agent (OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, or Copilot)
-- A project to work on (or an empty directory for new projects)
+### One-liner (recommended)
 
-### OpenCode (native)
+```bash
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash
+```
+
+Auto-detects which AI agents are configured in your project and installs Squirrel for all of them.
+
+### Install for a specific platform
+
+```bash
+# Any platform
+bash install.sh --platform <platform>
+
+# Examples
+bash install.sh --platform opencode
+bash install.sh --platform cursor
+bash install.sh --platform claude-code
+bash install.sh --platform aider
+
+# Custom output path
+bash install.sh --platform codex --path ./my-instructions.md
+```
+
+Supported platforms: `opencode`, `codex`, `claude-code`, `cursor`, `windsurf`, `aider`, `cline`, `copilot`
+
+### Manual install per platform
+
+<details>
+<summary>OpenCode</summary>
 
 ```bash
 mkdir -p ~/.config/opencode/skills/squirrel
-cp squirrel/SKILL.md ~/.config/opencode/skills/squirrel/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md \
+  -o ~/.config/opencode/skills/squirrel/SKILL.md
 ```
+</details>
 
-### OpenAI Codex
+<details>
+<summary>OpenAI Codex</summary>
 
 ```bash
-# Place at project root — auto-discovered
-cp squirrel/SKILL.md AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o AGENTS.md
 ```
+</details>
 
-### Claude Code
+<details>
+<summary>Claude Code</summary>
 
 ```bash
 # Option A: Direct
-cp squirrel/SKILL.md CLAUDE.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o CLAUDE.md
 
-# Option B: Import (if you already have a CLAUDE.md)
+# Option B: Import from existing CLAUDE.md
 echo -e "\n@AGENTS.md" >> CLAUDE.md
-cp squirrel/SKILL.md AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o AGENTS.md
 ```
+</details>
 
-### Cursor
+<details>
+<summary>Cursor</summary>
 
 ```bash
-# Option A: AGENTS.md (simplest)
-cp squirrel/SKILL.md AGENTS.md
-
-# Option B: Native rules with frontmatter
 mkdir -p .cursor/rules
-cat > .cursor/rules/squirrel.mdc << 'EOF'
----
-description: Squirrel full-cycle development skill
-alwaysApply: true
----
-[paste SKILL.md content here]
-EOF
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .cursor/rules/squirrel.mdc
+# Then add frontmatter to squirrel.mdc:
+# ---
+# description: Squirrel full-cycle development skill
+# alwaysApply: true
+# ---
 ```
+</details>
 
-### Windsurf
+<details>
+<summary>Windsurf</summary>
 
 ```bash
 mkdir -p .windsurf/rules
-cat > .windsurf/rules/squirrel.md << 'EOF'
----
-trigger: always_on
-description: Squirrel full-cycle development skill
----
-[paste SKILL.md content here]
-EOF
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .windsurf/rules/squirrel.md
+# Then add frontmatter to squirrel.md:
+# ---
+# trigger: always_on
+# description: Squirrel full-cycle development skill
+# ---
 ```
+</details>
 
-### Aider
+<details>
+<summary>Aider</summary>
 
 ```bash
-# Option A: Command-line flag
-aider --read squirrel/SKILL.md
-
-# Option B: Config file
-echo "read: squirrel/SKILL.md" >> .aider.conf.yml
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o squirrel-skill.md
+aider --read squirrel-skill.md
+# Or add to .aider.conf.yml:  read: squirrel-skill.md
 ```
+</details>
 
-### Cline
+<details>
+<summary>Cline</summary>
 
 ```bash
-# Cline auto-discovers AGENTS.md, .cursorrules, and .windsurfrules
-cp squirrel/SKILL.md AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .clinerules/squirrel.md
 ```
+</details>
 
-### GitHub Copilot
+<details>
+<summary>GitHub Copilot</summary>
 
 ```bash
 mkdir -p .github
-cp squirrel/SKILL.md .github/copilot-instructions.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md \
+  -o .github/copilot-instructions.md
 ```
+</details>
 
 ---
 
@@ -219,7 +258,8 @@ Squirrel ships with supplementary references loaded on demand:
 
 ```
 squirrel/
-├── SKILL.md                        # Main skill definition (576 lines)
+├── SKILL.md                        # Main skill definition (629 lines)
+├── install.sh                      # One-liner installer with auto-detection
 └── references/
     ├── ci_templates.md             # CI/CD pipeline templates
     ├── plan_template.md            # Project plan template
