@@ -2,7 +2,7 @@
 
 # 🐿️ Squirrel
 
-[![License](https://img.shields.io/github/license/flyingsquirrel0419/squirrel-skill)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platforms-8-blue)](#-platform-compatibility)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/github/all-contributors/flyingsquirrel0419/squirrel-skill?color=ee8449&style=flat-square)](#contributors)
