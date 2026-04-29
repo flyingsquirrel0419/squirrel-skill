@@ -36,7 +36,7 @@ while [[ $# -gt 0 ]]; do
     --help|-h)
       echo "Usage: bash install.sh [--platform <name>] [--path <dir>]"
       echo ""
-      echo "Platforms: opencode, codex, claude-code, cursor, windsurf, aider, cline, copilot"
+      echo "Platforms: opencode, codex, claude-code, cursor, windsurf, aider, cline, copilot, antigravity"
       echo ""
       echo "Without --platform, auto-detects installed AI agents and installs for all of them."
       exit 0
@@ -142,6 +142,11 @@ detect_platforms() {
     platforms+=("copilot")
   fi
 
+  # Antigravity (Google's AI coding IDE)
+  if [[ -d "${HOME}/.gemini/antigravity/skills" ]] || [[ -d ".agent/skills" ]] || [[ -d ".agents/skills" ]]; then
+    platforms+=("antigravity")
+  fi
+
   echo "${platforms[@]}"
 }
 
@@ -205,6 +210,17 @@ install_copilot() {
   ok "Installed for GitHub Copilot at ${dest}"
 }
 
+install_antigravity() {
+  local skill_dir="${HOME}/.gemini/antigravity/skills/squirrel"
+  mkdir -p "${skill_dir}"
+  download_skill "${skill_dir}/SKILL.md"
+  if [[ -d "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" ]]; then
+    cp -r "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" "${skill_dir}/references"
+    ok "Copied reference files"
+  fi
+  ok "Installed for Antigravity at ${skill_dir}/SKILL.md"
+}
+
 # --- Main ---
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -225,7 +241,8 @@ if [[ -n "${PLATFORM}" ]]; then
     aider)         install_aider ;;
     cline)         install_cline ;;
     copilot)       install_copilot ;;
-    *)             fail "Unknown platform: ${PLATFORM}. Supported: opencode, codex, claude-code, cursor, windsurf, aider, cline, copilot" ;;
+    antigravity)   install_antigravity ;;
+    *)             fail "Unknown platform: ${PLATFORM}. Supported: opencode, codex, claude-code, cursor, windsurf, aider, cline, copilot, antigravity" ;;
   esac
 else
   # Auto-detect
@@ -243,6 +260,7 @@ else
     echo "    bash install.sh --platform aider"
     echo "    bash install.sh --platform cline"
     echo "    bash install.sh --platform copilot"
+    echo "    bash install.sh --platform antigravity"
     echo ""
     echo "  Or install to a custom path:"
     echo "    bash install.sh --platform codex --path ./my-instructions.md"
@@ -263,6 +281,7 @@ else
       aider)         install_aider ;;
       cline)         install_cline ;;
       copilot)       install_copilot ;;
+      antigravity)   install_antigravity ;;
     esac
     echo ""
   done

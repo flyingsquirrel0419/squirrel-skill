@@ -3,7 +3,7 @@
 # 🐿️ Squirrel
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
-[![Platforms](https://img.shields.io/badge/platforms-8-blue)](#-platform-compatibility)
+[![Platforms](https://img.shields.io/badge/platforms-9-blue)](#-platform-compatibility)
 [![Agent Skills Spec](https://img.shields.io/badge/agentskills.io-spec%20compliant-blue)](https://agentskills.io/specification)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/github/all-contributors/flyingsquirrel0419/squirrel-skill?color=ee8449&style=flat-square)](#contributors)
@@ -12,7 +12,7 @@
 **Full-cycle AI coding skill that works everywhere — from blank canvas to production.**
 
 Plans, builds, tests, lints, fixes bugs, and writes production-grade docs.
-Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilot.
+Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, Copilot, and Antigravity.
 
 [Install](#-installation) · [How it works](#-how-it-works) · [Report Bug](https://github.com/flyingsquirrel0419/squirrel-skill/issues)
 
@@ -25,7 +25,7 @@ Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilo
 - **Auto-detects project state** — Greenfield, in-progress, or mature. Squirrel figures out where your project is and jumps in at exactly the right point instead of forcing a one-size-fits-all workflow.
 - **Respects existing code** — Matches your naming conventions, test framework, import style, and architecture. Extends what's there instead of overwriting it. Reads 2–3 similar files before writing a new one.
 - **8-phase engineering pipeline** — Discover → Plan → Build → Test → Bug Hunt → Polish → Document → Ship. The same disciplined process a senior engineer follows, every time.
-- **Platform-agnostic** — One skill file, 8 AI coding agents. Drop it in as `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/squirrel.mdc`, or any of the other supported formats and it just works.
+- **Platform-agnostic** — One skill file, 9 AI coding agents. Drop it in as `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/squirrel.mdc`, or any of the other supported formats and it just works.
 - **Built-in failure recovery** — 3-Strike Rule: fix, retry differently, then stop and ask. Never leaves code in a broken state. Includes sub-agent failure recovery for parallel execution.
 - **CI/CD templates included** — Ready-to-use GitHub Actions workflows for Node.js, Python, Go, Rust, and more. Use them as a starting point, not a drop-in guarantee.
 - **Stack-agnostic** — Works with TypeScript, Python, Go, Rust, Ruby, Java, C#, Elixir, and any language that has a linter, formatter, and test runner. Detects your stack and adapts automatically.
@@ -115,7 +115,7 @@ bash install.sh --platform aider
 bash install.sh --platform codex --path ./my-instructions.md
 ```
 
-Supported platforms: `opencode`, `codex`, `claude-code`, `cursor`, `windsurf`, `aider`, `cline`, `copilot`
+Supported platforms: `opencode`, `codex`, `claude-code`, `cursor`, `windsurf`, `aider`, `cline`, `copilot`, `antigravity`
 
 ### Manual install per platform
 
@@ -204,6 +204,16 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 mkdir -p .github
 curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md \
   -o .github/copilot-instructions.md
+```
+</details>
+
+<details>
+<summary>Antigravity</summary>
+
+```bash
+mkdir -p ~/.gemini/antigravity/skills/squirrel
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md \
+  -o ~/.gemini/antigravity/skills/squirrel/SKILL.md
 ```
 </details>
 

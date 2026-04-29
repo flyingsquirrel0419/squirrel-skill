@@ -11,7 +11,7 @@ description: |
 license: Apache-2.0
 metadata:
   author: flying_squirrel__
-  platforms: "opencode codex claude-code cursor windsurf aider cline copilot"
+  platforms: "opencode codex claude-code cursor windsurf aider cline copilot antigravity"
 ---
 
 # 🐿️ Squirrel — Full-Cycle Software Development Skill
@@ -557,12 +557,13 @@ Every major AI coding agent reads plain Markdown instructions. The YAML frontmat
 | **Aider** | Any `.md` file, load via `--read` | `aider --read squirrel-skill.md` or `.aider.conf.yml` → `read:` |
 | **Cline** | `.clinerules/squirrel.md` or `AGENTS.md` | Auto-discovers both + `.cursorrules`, `.windsurfrules` |
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Auto-discovered from `.github/` |
+| **Antigravity** | `~/.gemini/antigravity/skills/squirrel/SKILL.md` | Auto-discovered from skill directory |
 
 ### Minimal setup (covers 4 platforms with one file):
 
 Place `AGENTS.md` at the project root. Natively read by **Codex**, **Cursor**, **Cline**, and **Claude Code** (via `@AGENTS.md` import).
 
-### Full setup (all 8 platforms):
+### Full setup (all 9 platforms):
 
 ```
 project/
@@ -572,7 +573,8 @@ project/
 ├── .clinerules/squirrel.md                # Cline (native rules)
 ├── .github/copilot-instructions.md        # GitHub Copilot
 ├── CLAUDE.md                              # Claude Code (or just @AGENTS.md import)
-└── .aider.conf.yml → read: squirrel.md    # Aider (explicit load)
+├── .aider.conf.yml → read: squirrel.md    # Aider (explicit load)
+└── ~/.gemini/antigravity/skills/squirrel/ # Antigravity (global skill directory)
 ```
 
 For Cursor `.mdc` files, add this frontmatter before the Markdown body:
@@ -593,7 +595,7 @@ description: Squirrel full-cycle development skill
 
 ### Execution model by platform:
 
-**Parallel-capable** (OpenCode, Codex, Cursor):
+**Parallel-capable** (OpenCode, Codex, Cursor, Antigravity):
 - Use sub-agent delegation in Phase 3 as described in the Build section
 - Maximize throughput by spawning independent work units simultaneously
 

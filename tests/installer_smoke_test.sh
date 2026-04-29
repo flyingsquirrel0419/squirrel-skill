@@ -75,6 +75,21 @@ test_custom_nested_path_creates_parent_directories() {
   [[ -f "$output_file" ]] || fail "Custom nested path install did not create $output_file"
 }
 
+test_antigravity_creates_skill_directory() {
+  local fixture_dir output_dir home_dir
+  fixture_dir="$(setup_fixture)"
+  home_dir="$(mktemp -d)"
+  output_dir="$home_dir/.gemini/antigravity/skills/squirrel"
+
+  (
+    cd "$fixture_dir"
+    HOME="$home_dir" bash install.sh --platform antigravity >/dev/null
+  )
+
+  [[ -f "$output_dir/SKILL.md" ]] || fail "Antigravity install did not create $output_dir/SKILL.md"
+  [[ -d "$output_dir/references" ]] || fail "Antigravity install did not copy references"
+}
+
 test_docs_use_canonical_repo_slug() {
   local files
   local legacy_owner legacy_repo
@@ -137,6 +152,7 @@ test_pull_request_template_exists() {
 main() {
   test_cursor_frontmatter_uses_real_newlines
   test_custom_nested_path_creates_parent_directories
+  test_antigravity_creates_skill_directory
   test_docs_use_canonical_repo_slug
   test_release_docs_match_1_0_0_state
   test_all_contributors_docs_are_wired_up
