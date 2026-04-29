@@ -35,8 +35,9 @@ setup_fixture() {
   local fixture_dir
   fixture_dir="$(mktemp -d)"
 
-  cp "$ROOT_DIR/install.sh" "$ROOT_DIR/SKILL.md" "$fixture_dir/"
-  mkdir -p "$fixture_dir/references"
+  cp "$ROOT_DIR/install.sh" "$fixture_dir/"
+  mkdir -p "$fixture_dir/skills/squirrel/references"
+  cp "$ROOT_DIR/skills/squirrel/SKILL.md" "$fixture_dir/skills/squirrel/SKILL.md"
 
   printf '%s\n' "$fixture_dir"
 }
@@ -79,7 +80,7 @@ test_docs_use_canonical_repo_slug() {
   local legacy_owner legacy_repo
   files=(
     "$ROOT_DIR/README.md"
-    "$ROOT_DIR/SKILL.md"
+    "$ROOT_DIR/skills/squirrel/SKILL.md"
     "$ROOT_DIR/CHANGELOG.md"
     "$ROOT_DIR/CONTRIBUTING.md"
     "$ROOT_DIR/CODE_OF_CONDUCT.md"

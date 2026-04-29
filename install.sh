@@ -25,6 +25,8 @@ PLATFORM=""
 CUSTOM_PATH=""
 REPO_URL="https://github.com/flyingsquirrel0419/squirrel-skill"
 RAW_BASE="https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main"
+SKILL_SUBDIR="skills/squirrel"
+SKILL_FILE="SKILL.md"
 
 # --- Parse args ---
 while [[ $# -gt 0 ]]; do
@@ -54,23 +56,23 @@ download_skill() {
 
   mkdir -p "$(dirname "${dest}")"
 
-  if [[ -d "${SCRIPT_DIR}/references" ]]; then
+  if [[ -d "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" ]]; then
     # Running from cloned repo — copy local files
-    cp "${SCRIPT_DIR}/SKILL.md" "${dest}"
+    cp "${SCRIPT_DIR}/${SKILL_SUBDIR}/${SKILL_FILE}" "${dest}"
     ok "Copied from local repository"
     return 0
   fi
 
   # Download from GitHub
-  info "Downloading SKILL.md..."
+  info "Downloading ${SKILL_FILE}..."
   if command -v curl &>/dev/null; then
-    curl -fsSL "${RAW_BASE}/SKILL.md" -o "${dest}" || fail "Failed to download SKILL.md"
+    curl -fsSL "${RAW_BASE}/${SKILL_SUBDIR}/${SKILL_FILE}" -o "${dest}" || fail "Failed to download ${SKILL_FILE}"
   elif command -v wget &>/dev/null; then
-    wget -q "${RAW_BASE}/SKILL.md" -O "${dest}" || fail "Failed to download SKILL.md"
+    wget -q "${RAW_BASE}/${SKILL_SUBDIR}/${SKILL_FILE}" -O "${dest}" || fail "Failed to download ${SKILL_FILE}"
   else
     fail "Need curl or wget to download"
   fi
-  ok "Downloaded SKILL.md"
+  ok "Downloaded ${SKILL_FILE}"
 }
 
 download_with_frontmatter() {
@@ -80,10 +82,10 @@ download_with_frontmatter() {
 
   mkdir -p "$(dirname "${dest}")"
 
-  if [[ -d "${SCRIPT_DIR}/references" ]]; then
+  if [[ -d "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" ]]; then
     # Local repo — prepend frontmatter to copy
     printf '%s\n\n' "${frontmatter}" > "${dest}"
-    cat "${SCRIPT_DIR}/SKILL.md" >> "${dest}"
+    cat "${SCRIPT_DIR}/${SKILL_SUBDIR}/${SKILL_FILE}" >> "${dest}"
     ok "Copied from local repository with frontmatter"
     return 0
   fi
@@ -149,6 +151,11 @@ install_opencode() {
   local skill_dir="${HOME}/.config/opencode/skills/squirrel"
   mkdir -p "${skill_dir}"
   download_skill "${skill_dir}/SKILL.md"
+  # Copy references alongside SKILL.md for on-demand loading
+  if [[ -d "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" ]]; then
+    cp -r "${SCRIPT_DIR}/${SKILL_SUBDIR}/references" "${skill_dir}/references"
+    ok "Copied reference files"
+  fi
   ok "Installed for OpenCode at ${skill_dir}/SKILL.md"
 }
 

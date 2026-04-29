@@ -1,6 +1,5 @@
 ---
 name: squirrel
-author: flying_squirrel__
 description: |
   Full-cycle software development agent: plans, builds, tests, lints, fixes bugs, and writes production-grade README docs.
 
@@ -9,16 +8,10 @@ description: |
   Trigger on: "build me", "create a project", "make a", "fix this bug", "add tests", "write README", "improve code quality", "refactor", "review my code", "squirrel", "스쿼럴" — or any request that involves writing, reading, or improving code files, even if it sounds simple.
 
   Why the name? Squirrels are obsessive planners. They find, organize, and store before winter hits. This skill does the same: gather requirements → plan carefully → build for the long run.
-
-platforms:
-  - opencode     # ~/.config/opencode/skills/squirrel/SKILL.md or .opencode/skills/
-  - codex        # AGENTS.md or codex-instructions.md in project root
-  - claude-code  # CLAUDE.md in project root
-  - cursor       # .cursorrules or .cursor/rules/*.mdc
-  - windsurf     # .windsurf/rules/*.md or .windsurfrules in project root
-  - aider        # CONVENTIONS.md or .aider.conf.yml
-  - cline        # .clinerules in project root
-  - copilot      # .github/copilot-instructions.md
+license: Apache-2.0
+metadata:
+  author: flying_squirrel__
+  platforms: "opencode codex claude-code cursor windsurf aider cline copilot"
 ---
 
 # 🐿️ Squirrel — Full-Cycle Software Development Skill

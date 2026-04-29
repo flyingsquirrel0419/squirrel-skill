@@ -35,16 +35,16 @@ If you find an instruction that leads to incorrect, insecure, or unexpected AI b
 
 Squirrel aims to be stack-agnostic. If your language or framework is underrepresented:
 
-- **`references/stack_hints.md`**: Add a new `## Language / Framework` section with common pitfalls and good patterns. Follow the existing format.
-- **`references/ci_templates.md`**: Add a new CI template for your ecosystem. Follow the existing format.
-- **`SKILL.md`**: Only edit if the main pipeline instructions assume something that doesn't apply to your stack (e.g., if a command example is npm-only and your stack needs something different).
+- **`references/stack_hints.md`** (inside `skills/squirrel/`): Add a new `## Language / Framework` section with common pitfalls and good patterns. Follow the existing format.
+- **`references/ci_templates.md`** (inside `skills/squirrel/`): Add a new CI template for your ecosystem. Follow the existing format.
+- **`SKILL.md`** (inside `skills/squirrel/`): Only edit if the main pipeline instructions assume something that doesn't apply to your stack (e.g., if a command example is npm-only and your stack needs something different).
 
 ### New platform support
 
 If you want to add support for a new AI coding agent:
 
 1. Research how the platform loads custom instructions (file name, format, frontmatter)
-2. Add it to the `platforms:` list in SKILL.md frontmatter
+2. Add it to the `metadata.platforms` string in SKILL.md frontmatter
 3. Add installation instructions in the Platform Compatibility section
 4. Add an execution model entry (parallel-capable or sequential)
 5. Update README.md with the new installation method
@@ -142,9 +142,9 @@ git clone https://github.com/flyingsquirrel0419/squirrel-skill.git
 cd squirrel-skill
 
 # Edit
-vim SKILL.md
+vim skills/squirrel/SKILL.md
 # or
-vim references/stack_hints.md
+vim skills/squirrel/references/stack_hints.md
 
 # Test
 bash -n install.sh
@@ -157,20 +157,22 @@ bash tests/installer_smoke_test.sh
 squirrel/
 ├── .all-contributorsrc              # All Contributors config
 ├── .github/workflows/ci.yml         # Smoke-test workflow
-├── SKILL.md                        # Main skill — single source of truth
-├── README.md                       # Project documentation
-├── CHANGELOG.md                    # Version history
-├── CONTRIBUTING.md                 # This file
-├── SECURITY.md                     # Vulnerability reporting
-├── CODE_OF_CONDUCT.md              # Community standards
-├── LICENSE                         # Apache 2.0
-├── tests/
-│   └── installer_smoke_test.sh     # Installer and documentation consistency checks
-└── references/
-    ├── ci_templates.md             # CI/CD pipeline templates
-    ├── plan_template.md            # Project plan template
-    ├── readme_template.md          # README template
-    └── stack_hints.md              # Language-specific best practices
+├── skills/
+│   └── squirrel/
+│       ├── SKILL.md                 # Main skill — single source of truth
+│       └── references/
+│           ├── ci_templates.md      # CI/CD pipeline templates
+│           ├── plan_template.md     # Project plan template
+│           ├── readme_template.md   # README template
+│           └── stack_hints.md       # Language-specific best practices
+├── README.md                        # Project documentation
+├── CHANGELOG.md                     # Version history
+├── CONTRIBUTING.md                  # This file
+├── SECURITY.md                      # Vulnerability reporting
+├── CODE_OF_CONDUCT.md               # Community standards
+├── LICENSE                          # Apache 2.0
+└── tests/
+    └── installer_smoke_test.sh      # Installer and documentation consistency checks
 ```
 
 ---

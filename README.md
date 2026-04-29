@@ -4,6 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platforms-8-blue)](#-platform-compatibility)
+[![Agent Skills Spec](https://img.shields.io/badge/agentskills.io-spec%20compliant-blue)](https://agentskills.io/specification)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/github/all-contributors/flyingsquirrel0419/squirrel-skill?color=ee8449&style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -33,7 +34,13 @@ Runs on OpenCode, Codex, Claude Code, Cursor, Windsurf, Aider, Cline, and Copilo
 
 ## Quick Start
 
-Install in one command — auto-detects your AI agent and platform:
+Install with [skills.sh](https://skills.sh) (works with 50+ AI agents):
+
+```bash
+npx skills add flyingsquirrel0419/squirrel-skill
+```
+
+Or install in one command — auto-detects your AI agent and platform:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/install.sh | bash
@@ -76,6 +83,14 @@ Squirrel auto-detects your project state and starts at the right phase. No confi
 
 ## Installation
 
+### skills.sh (works with 50+ agents)
+
+```bash
+npx skills add flyingsquirrel0419/squirrel-skill
+```
+
+Universal installer — auto-detects your agent and installs Squirrel with references. No setup needed.
+
 ### One-liner (recommended)
 
 ```bash
@@ -109,7 +124,7 @@ Supported platforms: `opencode`, `codex`, `claude-code`, `cursor`, `windsurf`, `
 
 ```bash
 mkdir -p ~/.config/opencode/skills/squirrel
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md \
   -o ~/.config/opencode/skills/squirrel/SKILL.md
 ```
 </details>
@@ -118,7 +133,7 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 <summary>OpenAI Codex</summary>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o AGENTS.md
 ```
 </details>
 
@@ -127,11 +142,11 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 
 ```bash
 # Option A: Direct
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o CLAUDE.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o CLAUDE.md
 
 # Option B: Import from existing CLAUDE.md
 echo -e "\n@AGENTS.md" >> CLAUDE.md
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o AGENTS.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o AGENTS.md
 ```
 </details>
 
@@ -140,7 +155,7 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 
 ```bash
 mkdir -p .cursor/rules
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .cursor/rules/squirrel.mdc
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o .cursor/rules/squirrel.mdc
 # Then add frontmatter to squirrel.mdc:
 # ---
 # description: Squirrel full-cycle development skill
@@ -154,7 +169,7 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 
 ```bash
 mkdir -p .windsurf/rules
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .windsurf/rules/squirrel.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o .windsurf/rules/squirrel.md
 # Then add frontmatter to squirrel.md:
 # ---
 # trigger: always_on
@@ -167,7 +182,7 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 <summary>Aider</summary>
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o squirrel-skill.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o squirrel-skill.md
 aider --read squirrel-skill.md
 # Or add to .aider.conf.yml:  read: squirrel-skill.md
 ```
@@ -178,7 +193,7 @@ aider --read squirrel-skill.md
 
 ```bash
 mkdir -p .clinerules
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md -o .clinerules/squirrel.md
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md -o .clinerules/squirrel.md
 ```
 </details>
 
@@ -187,7 +202,7 @@ curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/m
 
 ```bash
 mkdir -p .github
-curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/SKILL.md \
+curl -fsSL https://raw.githubusercontent.com/flyingsquirrel0419/squirrel-skill/main/skills/squirrel/SKILL.md \
   -o .github/copilot-instructions.md
 ```
 </details>
@@ -264,22 +279,24 @@ Squirrel ships with supplementary references loaded on demand:
 squirrel/
 ├── .all-contributorsrc              # All Contributors config for README credits
 ├── .github/workflows/ci.yml         # Smoke-test workflow for installer regressions
-├── SKILL.md                        # Main skill definition (629 lines)
-├── install.sh                      # One-liner installer with auto-detection
-├── tests/
-│   └── installer_smoke_test.sh     # Verifies installer output and doc slug consistency
-└── references/
-    ├── ci_templates.md             # CI/CD pipeline templates
-    ├── plan_template.md            # Project plan template
-    ├── readme_template.md          # README template
-    └── stack_hints.md              # Language-specific best practices
+├── install.sh                       # One-liner installer with auto-detection
+├── skills/
+│   └── squirrel/
+│       ├── SKILL.md                 # Main skill definition
+│       └── references/
+│           ├── ci_templates.md      # CI/CD pipeline templates
+│           ├── plan_template.md     # Project plan template
+│           ├── readme_template.md   # README template
+│           └── stack_hints.md       # Language-specific best practices
+└── tests/
+    └── installer_smoke_test.sh      # Verifies installer output and doc slug consistency
 ```
 
 ### Contributing
 
 1. Fork the repo
 2. Create a branch: `git checkout -b feature/your-feature`
-3. Edit `SKILL.md` or add references in `references/`
+3. Edit `skills/squirrel/SKILL.md` or add references in `skills/squirrel/references/`
 4. Test your changes on at least one supported platform
 5. Push and open a PR
 
